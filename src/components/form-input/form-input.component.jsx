@@ -2,22 +2,22 @@
 import PropTypes from 'prop-types';
 import './form-input.styles.scss';
 
-function FormInput({ label, htmlFor, inputOptions }) {
+const FormInput = ({ label, htmlFor, inputOptions }) => {
   return (
-    <div className="group">
-      <input className="form-input" id={htmlFor} {...inputOptions} />
+    <div className='group'>
+      <input className='form-input' id={htmlFor} {...inputOptions} />
       {label && (
         <label
-          className={`${inputOptions.value.length ? 'shrink' : ''} form-input-label`}
-          htmlFor={htmlFor}
-        >
+          className={`${
+            inputOptions.value.length ? 'shrink' : ''
+          } form-input-label`}
+          htmlFor={htmlFor}>
           {label}
         </label>
       )}
     </div>
-
   );
-}
+};
 
 FormInput.propTypes = {
   label: PropTypes.string,

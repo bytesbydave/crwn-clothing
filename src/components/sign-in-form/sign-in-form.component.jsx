@@ -15,11 +15,9 @@ const defaultFormFields = {
   password: '',
 };
 
-function SignInForm() {
+const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const {
-    email, password,
-  } = formFields;
+  const { email, password } = formFields;
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -54,14 +52,13 @@ function SignInForm() {
   };
 
   return (
-    <div className="sign-up-container">
+    <div className='sign-up-container'>
       <h2>Already have an Account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
-
         <FormInput
-          label="Email"
-          htmlFor="email-signin"
+          label='Email'
+          htmlFor='email-signin'
           inputOptions={{
             type: 'email',
             onChange: handleChange,
@@ -72,8 +69,8 @@ function SignInForm() {
         />
 
         <FormInput
-          label="Password"
-          htmlFor="password-signin"
+          label='Password'
+          htmlFor='password-signin'
           inputOptions={{
             type: 'password',
             onChange: handleChange,
@@ -82,19 +79,17 @@ function SignInForm() {
             required: true,
           }}
         />
-        <div className="buttons-container">
-          <Button type="submit" buttonType="">Sign In</Button>
-          <Button
-            onClick={signInWithGoogle}
-            buttonType="google"
-            type="button"
-          >
+        <div className='buttons-container'>
+          <Button type='submit' buttonType=''>
+            Sign In
+          </Button>
+          <Button onClick={signInWithGoogle} buttonType='google' type='button'>
             Google Sign In
           </Button>
         </div>
       </form>
     </div>
   );
-}
+};
 
 export default SignInForm;

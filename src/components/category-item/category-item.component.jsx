@@ -1,23 +1,23 @@
 import './category-item.styles.scss';
 import PropTypes from 'prop-types';
 
-function CategoryItem({ category }) {
+const CategoryItem = ({ category }) => {
   const { imageUrl, title } = category;
   return (
-    <div className="category-container">
+    <div className='category-container'>
       <div
-        className="background-image"
+        className='background-image'
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
       />
-      <div className="category-body-container">
+      <div className='category-body-container'>
         <h2>{title}</h2>
         <p>Shop Now</p>
       </div>
     </div>
   );
-}
+};
 
 CategoryItem.propTypes = {
   category: PropTypes.shape({
