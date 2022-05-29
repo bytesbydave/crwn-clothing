@@ -1,40 +1,25 @@
-import PropTypes from 'prop-types';
+import {
+  BaseButton,
+  GoogleSignInButton,
+  InvertedButton,
+} from './button.styles';
 
-import './button.styles.scss';
-
-const BUTTON_TYPE_CLASSES = {
+export const BUTTON_TYPE_CLASSES = {
+  base: 'base',
   google: 'google-sign-in',
   inverted: 'inverted',
 };
 
-const Button = ({ children, buttonType, ...buttonoptions }) => {
-  return (
-    <button
-      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
-      {...buttonoptions}>
-      {children}
-    </button>
-  );
-};
+const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
+  ({
+    [BUTTON_TYPE_CLASSES.base]: BaseButton,
+    [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,
+    [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
+  }[buttonType]);
 
-Button.propTypes = {
-  buttonType: PropTypes.string,
-  children: PropTypes.string,
-  buttonoptions: PropTypes.shape({
-    name: PropTypes.string,
-    onClick: PropTypes.func,
-    type: PropTypes.string,
-  }),
-};
-
-Button.defaultProps = {
-  buttonType: '',
-  children: '',
-  buttonoptions: {
-    name: '',
-    onClick: () => {},
-    type: 'button',
-  },
+const Button = ({ children, buttonType, ...otherProps }) => {
+  const CustomButton = getButton(buttonType);
+  return <CustomButton {...otherProps}>{children}</CustomButton>;
 };
 
 export default Button;
